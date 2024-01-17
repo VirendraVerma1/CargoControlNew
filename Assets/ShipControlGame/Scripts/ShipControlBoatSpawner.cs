@@ -41,14 +41,12 @@ public class ShipControlBoatSpawner : MonoBehaviour
 
     int CheckIfMaxBoatReached()
     {
-        int index = 0;
-        foreach (var boat in allSpawnedBoats)
+        for (int i=0;i<allSpawnedBoats.Count;i++)
         {
-            if(!boat)
+            if(!allSpawnedBoats[i])
             {
-                allSpawnedBoats.RemoveAt(index);
+                allSpawnedBoats.RemoveAt(i);
             }
-            index++;
         }
         return allSpawnedBoats.Count;
     }

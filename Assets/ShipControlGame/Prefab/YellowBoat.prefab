@@ -139,7 +139,7 @@ MonoBehaviour:
   isLoopCompleted: 0
   isReached: 0
   reachedAtWaypoint: 3
-  movingSpeed: 0.3
+  movingSpeed: 0.5
   myTag: Yellow
 --- !u!195 &3860352121334500522
 NavMeshAgent:
@@ -154,7 +154,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 70
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

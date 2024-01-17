@@ -56,9 +56,12 @@ namespace ShipControl
                     }
                     else if (startmakingWaypoints )
                     {
+                        if (!previousSpawnPoint)
+                            previousSpawnPoint=gameObject;
                         if (Vector3.Distance(hit.point, previousSpawnPoint.transform.position) > minDistanceToSpawnWaypoints)
                         {
                             GameObject g = Instantiate(selectedPoint, hit.point+new Vector3(0,0.8f,0), Quaternion.identity);
+                            print(g.name);
                             _shipBotController.myWaypoints.Add(g);
                             _shipBotController.SetPoint();
                             previousSpawnPoint = g;
@@ -75,6 +78,7 @@ namespace ShipControl
             {
                 isholdingForWaypoint = false;
                 previousSpawnPoint = gameObject;
+                startmakingWaypoints = false;
             }
         }
     }
