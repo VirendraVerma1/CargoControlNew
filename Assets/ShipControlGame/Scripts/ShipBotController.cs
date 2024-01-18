@@ -7,9 +7,17 @@ using Random = UnityEngine.Random;
 
 namespace ShipControl
 {
+
     [RequireComponent(typeof(NavMeshAgent))]
     public class ShipBotController : MonoBehaviour
     {
+
+
+        public GameObject ObjectCarior;
+        public int ObjectId;
+
+        public Transform carriorPlacer;
+
         //move in the forward direction if there is no any other waypoint travel
         //if there is any waypoint travel then travel to it
         //if the loop is completed then the ship got minimized and destroyed
@@ -23,6 +31,8 @@ namespace ShipControl
         public float reachedAtWaypoint = 0.2f;
         public float movingSpeed = 0.3f;
         public string myTag = "Yellow";
+
+        PropsManager propsManager;
         void Start()
         {
             navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
@@ -30,14 +40,21 @@ namespace ShipControl
             isReached = false;
             FindNewPoint();
             navMeshAgent.SetDestination(tempPoint);
+            propsManager=GameObject.FindGameObjectWithTag("GameController").GetComponent<PropsManager>();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            print(collision.gameObject.name);
             if (collision.collider.tag == myTag)
             {
                 isReached = true;
+                ClearWayPoint();
+                propsManager.EnableObject(ObjectId);
+                Destroy(gameObject);
+            }
+            else if(collision.collider.tag!="Untagged")
+            {
+                //Destroy the ship and send the instance id that not received
                 ClearWayPoint();
                 Destroy(gameObject);
             }

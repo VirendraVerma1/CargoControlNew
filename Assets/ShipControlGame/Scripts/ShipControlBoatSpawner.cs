@@ -22,6 +22,8 @@ public class ShipControlBoatSpawner : MonoBehaviour
 
     List<GameObject> allSpawnedBoats = new List<GameObject>();
 
+    public PropsManager propsManager;
+
     private void Start()
     {
         _shipControlGameManager = gameObject.GetComponent<ShipControlGameManager>();
@@ -57,6 +59,15 @@ public class ShipControlBoatSpawner : MonoBehaviour
         GameObject g = Instantiate(Boats[randomBoat], SpawnPoint(), gameObject.transform.rotation);
         g.transform.LookAt(gameObject.transform);
         allSpawnedBoats.Add(g);
+
+        GameObject objectTOPlace=propsManager.GetProp();
+        ShipBotController shipBotController=g.GetComponent<ShipBotController>();
+        shipBotController.ObjectCarior = Instantiate( objectTOPlace, shipBotController.carriorPlacer.position,Quaternion.identity);
+        shipBotController.ObjectCarior.transform.SetParent(g.transform);
+        shipBotController.ObjectId = objectTOPlace.GetInstanceID();
+        shipBotController.ObjectCarior.SetActive(true);
+        Destroy(shipBotController.ObjectCarior.GetComponent<MeshCollider>());
+        shipBotController.ObjectCarior.transform.localScale = shipBotController.ObjectCarior.transform.localScale*2;
     }
     
     

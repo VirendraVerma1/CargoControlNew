@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 327431343968706799}
   - component: {fileID: 327431343968706796}
-  - component: {fileID: 327431343968706797}
   - component: {fileID: 327431343968706798}
   - component: {fileID: 327431343968706801}
   - component: {fileID: 3860352121334500525}
@@ -65,22 +64,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &327431343968706797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327431343968706794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1e3a96f839bcfe4480a3d71c56addb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boatRb: {fileID: 327431343968706796}
-  Rotspeed: 10
-  boatspeed: 1
-  deacclartion: 10
 --- !u!65 &327431343968706798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -135,6 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc56a195331001e4a94ad3c7729b30eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectCarior: {fileID: 2572030685835368908}
+  ObjectId: 0
+  carriorPlacer: {fileID: 3397478411454171211}
   myWaypoints: []
   isLoopCompleted: 0
   isReached: 0
@@ -163,6 +149,37 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &2572030685835368908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3397478411454171211}
+  m_Layer: 6
+  m_Name: ObjectPlacer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3397478411454171211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2572030685835368908}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 31.200031, y: 13.36923, z: 0}
+  m_LocalScale: {x: 49.99999, y: 15.384615, z: 99.99998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3860352121167712867}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3860352121168103651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -273,7 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 261a35d765654584c84fd5643ecefdde, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: ba08595fb3d2bf8479cbda348022e221,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3397478411454171211}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: ba08595fb3d2bf8479cbda348022e221,
         type: 3}
